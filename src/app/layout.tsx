@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeScript } from "@/components/theme/ThemeScript";
+import { PillNav } from "@/components/nav/PillNav";
+import { Footer } from "@/components/footer/Footer";
 import { site } from "@/data/site";
 import "./globals.css";
 
@@ -34,7 +36,9 @@ export default function RootLayout({
         <ThemeScript />
       </head>
       <body className="min-h-full flex flex-col bg-[var(--color-bg)] text-[var(--color-fg)]">
-        {children}
+        <PillNav />
+        <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   );
