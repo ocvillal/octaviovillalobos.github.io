@@ -13,5 +13,5 @@ export const site = {
     github: "https://github.com/ocvillal",
     linkedin: "https://www.linkedin.com/in/octavio-villalobos/",
   },
-  resumeHref: "/documents/resume.pdf",
+  resumeHref: "/documents/Main_resume_August.pdf",
 } as const;
