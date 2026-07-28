@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { site } from "@/data/site";
+import { withBasePath } from "@/lib/paths";
 import { TagBubble } from "./TagBubble";
 
 export function Hero() {
@@ -55,7 +56,7 @@ export function Hero() {
             See my work
           </a>
           <a
-            href={site.resumeHref}
+            href={withBasePath(site.resumeHref)}
             target="_blank"
             rel="noreferrer"
             className="rounded-full border border-[var(--color-border)] px-5 py-2.5 text-sm font-semibold text-fg transition-colors hover:bg-[var(--color-bg-secondary)]"
