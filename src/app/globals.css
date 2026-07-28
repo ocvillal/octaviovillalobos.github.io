@@ -61,3 +61,12 @@ body {
   color: var(--color-fg);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
+
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(to right, var(--color-border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-border) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black, transparent 85%);
+  opacity: 0.5;
+}
