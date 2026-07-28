@@ -8,12 +8,14 @@ import { SPOTLIGHT_COLORS } from "@/lib/spotlightColors";
 
 export function Experience() {
   return (
-    <section id="experience" className="bg-[var(--color-bg)]">
+    <section id="experience" className="relative bg-[var(--color-bg)]">
+      <div className="bg-grid-pattern pointer-events-none absolute inset-0 -z-10" />
       <div className="mx-auto max-w-5xl px-4 py-16">
         <h2 className="text-sm font-semibold uppercase tracking-widest text-fg-muted">Experience</h2>
 
         <div className="mt-8">
           <ScrollSpotlight
+            sectionLabel="Experience"
             items={experience}
             getKey={(entry) => entry.org + entry.role}
             renderItem={(entry, index, isActive) => (

@@ -55,6 +55,7 @@ export const projects: Project[] = [
         kind: "demo",
       },
     ],
+    featured: true,
   },
   {
     slug: "formula-forecast",
