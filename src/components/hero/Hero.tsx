@@ -3,6 +3,8 @@ import { Mail, FileText } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons/BrandIcons";
 import { site } from "@/data/site";
 import { withBasePath } from "@/lib/paths";
+import { ScrambleText } from "@/components/motion/ScrambleText";
+import { Magnetic } from "@/components/motion/Magnetic";
 
 const CONTACT_LINKS = [
   { label: "LinkedIn", href: site.socials.linkedin, icon: LinkedinIcon, bg: "#0a66c2" },
@@ -32,27 +34,32 @@ export function Hero() {
             <p className="text-fg-muted">I&rsquo;m {site.name}, and I enjoy</p>
 
             <h1 className="mt-2 text-4xl font-black leading-[1.05] sm:text-5xl md:text-6xl">
-              <span className="block text-fg">Building AI systems</span>
-              <span className="block" style={{ color: "var(--color-accent)" }}>
-                from research to production 🚀
-              </span>
+              <ScrambleText text="Building AI systems" className="block text-fg" />
+              <ScrambleText
+                text="from research to production 🚀"
+                className="block"
+                style={{ color: "var(--color-accent)" }}
+                delay={300}
+              />
             </h1>
 
             <p className="mt-5 text-xl font-bold text-fg">Computer Scientist &amp; ML Engineer</p>
 
             <div className="mt-6 flex flex-wrap gap-3">
               {CONTACT_LINKS.map(({ label, href, icon: Icon, bg }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target={href.startsWith("http") || href.endsWith(".pdf") ? "_blank" : undefined}
-                  rel={href.startsWith("http") || href.endsWith(".pdf") ? "noreferrer" : undefined}
-                  aria-label={label}
-                  className="flex h-11 w-11 items-center justify-center rounded-xl text-white transition-transform hover:-translate-y-0.5"
-                  style={{ background: bg }}
-                >
-                  <Icon size={20} />
-                </a>
+                <Magnetic key={label}>
+                  <a
+                    href={href}
+                    target={href.startsWith("http") || href.endsWith(".pdf") ? "_blank" : undefined}
+                    rel={href.startsWith("http") || href.endsWith(".pdf") ? "noreferrer" : undefined}
+                    aria-label={label}
+                    data-cursor-hover
+                    className="flex h-11 w-11 items-center justify-center rounded-xl text-white"
+                    style={{ background: bg }}
+                  >
+                    <Icon size={20} />
+                  </a>
+                </Magnetic>
               ))}
             </div>
           </div>

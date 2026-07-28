@@ -7,6 +7,7 @@ import { ScrollSpotlight } from "@/components/scrolly/ScrollSpotlight";
 import { ProjectPanel } from "./ProjectPanel";
 import type { Project } from "@/types/project";
 import { SPOTLIGHT_COLORS } from "@/lib/spotlightColors";
+import { Reveal } from "@/components/motion/Reveal";
 
 const featuredProjects = projects.filter((p) => p.featured);
 
@@ -19,7 +20,9 @@ export function ProjectGrid() {
     <section id="projects" className="relative bg-[var(--color-bg)]">
       <div className="bg-grid-pattern pointer-events-none absolute inset-0 -z-10" />
       <div className="mx-auto max-w-5xl px-4 py-16">
-        <h2 className="text-sm font-semibold uppercase tracking-widest text-fg-muted">Projects</h2>
+        <Reveal>
+          <h2 className="text-sm font-semibold uppercase tracking-widest text-fg-muted">Projects</h2>
+        </Reveal>
 
         <div className="mt-8">
           <ScrollSpotlight

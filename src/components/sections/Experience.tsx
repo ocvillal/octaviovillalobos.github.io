@@ -5,13 +5,16 @@ import { education } from "@/data/education";
 import { ScrollSpotlight } from "@/components/scrolly/ScrollSpotlight";
 import { ExperiencePanel } from "./ExperiencePanel";
 import { SPOTLIGHT_COLORS } from "@/lib/spotlightColors";
+import { Reveal } from "@/components/motion/Reveal";
 
 export function Experience() {
   return (
     <section id="experience" className="relative bg-[var(--color-bg)]">
       <div className="bg-grid-pattern pointer-events-none absolute inset-0 -z-10" />
       <div className="mx-auto max-w-5xl px-4 py-16">
-        <h2 className="text-sm font-semibold uppercase tracking-widest text-fg-muted">Experience</h2>
+        <Reveal>
+          <h2 className="text-sm font-semibold uppercase tracking-widest text-fg-muted">Experience</h2>
+        </Reveal>
 
         <div className="mt-8">
           <ScrollSpotlight
@@ -40,23 +43,27 @@ export function Experience() {
           />
         </div>
 
-        <h2 className="mt-20 text-sm font-semibold uppercase tracking-widest text-fg-muted">
-          Education
-        </h2>
+        <Reveal delay={100}>
+          <h2 className="mt-20 text-sm font-semibold uppercase tracking-widest text-fg-muted">
+            Education
+          </h2>
+        </Reveal>
         <div className="mt-8 grid gap-8 sm:grid-cols-2">
-          {education.map((entry) => (
-            <article key={entry.degree}>
-              <h4 className="font-semibold">
-                {entry.org} <span className="text-fg-muted font-normal">— {entry.location}</span>
-              </h4>
-              <p className="text-sm text-fg-muted">{entry.degree}</p>
-              {entry.meta.map((m) => (
-                <p key={m} className="text-sm text-fg-muted">
-                  {m}
-                </p>
-              ))}
-              <p className="text-sm text-fg-muted">{entry.period}</p>
-            </article>
+          {education.map((entry, i) => (
+            <Reveal key={entry.degree} delay={i * 100}>
+              <article>
+                <h4 className="font-semibold">
+                  {entry.org} <span className="text-fg-muted font-normal">— {entry.location}</span>
+                </h4>
+                <p className="text-sm text-fg-muted">{entry.degree}</p>
+                {entry.meta.map((m) => (
+                  <p key={m} className="text-sm text-fg-muted">
+                    {m}
+                  </p>
+                ))}
+                <p className="text-sm text-fg-muted">{entry.period}</p>
+              </article>
+            </Reveal>
           ))}
         </div>
       </div>
