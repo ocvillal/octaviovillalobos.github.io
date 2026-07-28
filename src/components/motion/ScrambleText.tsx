@@ -4,18 +4,20 @@ import { useEffect, useState, type CSSProperties } from "react";
 
 const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 const LETTER = /[a-zA-Z]/;
-const TOTAL_FRAMES = 24;
+const DEFAULT_DURATION_MS = 1400;
 
 export function ScrambleText({
   text,
   className,
   style,
   delay = 0,
+  durationMs = DEFAULT_DURATION_MS,
 }: {
   text: string;
   className?: string;
   style?: CSSProperties;
   delay?: number;
+  durationMs?: number;
 }) {
   const [display, setDisplay] = useState(text);
 
@@ -25,13 +27,14 @@ export function ScrambleText({
       return;
     }
 
-    let frame = 0;
     let raf = 0;
+    let start = 0;
 
     const timeout = setTimeout(() => {
-      function tick() {
-        frame++;
-        const revealCount = Math.floor((frame / TOTAL_FRAMES) * text.length);
+      function tick(now: number) {
+        if (!start) start = now;
+        const progress = Math.min(1, (now - start) / durationMs);
+        const revealCount = Math.floor(progress * text.length);
         setDisplay(
           text
             .split("")
@@ -43,7 +46,7 @@ export function ScrambleText({
             .join("")
         );
 
-        if (frame < TOTAL_FRAMES) {
+        if (progress < 1) {
           raf = requestAnimationFrame(tick);
         } else {
           setDisplay(text);
@@ -56,7 +59,7 @@ export function ScrambleText({
       clearTimeout(timeout);
       cancelAnimationFrame(raf);
     };
-  }, [text, delay]);
+  }, [text, delay, durationMs]);
 
   return (
     <span className={className} style={style}>

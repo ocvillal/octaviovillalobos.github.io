@@ -1,7 +1,13 @@
 import type { SkillCategory } from "@/data/skills";
 import { SpotlightCard } from "@/components/motion/SpotlightCard";
 
-const COLORS = ["var(--color-accent)", "var(--color-accent-2)", "var(--color-accent-4)"];
+const COLORS = [
+  "var(--color-accent)",
+  "var(--color-accent-2)",
+  "var(--color-accent-3)",
+  "var(--color-accent-4)",
+  "var(--color-accent-5)",
+];
 
 export function SkillRow({ skill, index }: { skill: SkillCategory; index: number }) {
   const color = COLORS[index % COLORS.length];
