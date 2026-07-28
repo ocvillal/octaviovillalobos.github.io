@@ -1,5 +1,7 @@
 import type { SkillCategory } from "@/data/skills";
 import { SpotlightCard } from "@/components/motion/SpotlightCard";
+import { TechTag } from "@/components/skills/TechTag";
+import { techIcons } from "@/data/techIcons";
 
 const COLORS = [
   "var(--color-accent)",
@@ -20,15 +22,21 @@ export function SkillRow({ skill, index }: { skill: SkillCategory; index: number
         </h3>
         <p className="mt-2 max-w-sm text-fg-muted">{skill.description}</p>
       </div>
-      <div className="flex flex-wrap gap-2 sm:justify-end">
-        {skill.tags.map((tag) => (
-          <span
-            key={tag}
-            className="rounded-full border border-[var(--color-border)] px-3 py-1.5 text-sm text-fg"
-          >
-            {tag}
-          </span>
-        ))}
+      <div className="flex flex-wrap items-center gap-2 sm:justify-end">
+        {skill.tags.map((tag) => {
+          const icon = techIcons[tag];
+          if (icon) {
+            return <TechTag key={tag} name={tag} Icon={icon.Icon} color={icon.color} />;
+          }
+          return (
+            <span
+              key={tag}
+              className="rounded-full border border-[var(--color-border)] px-3 py-1.5 text-sm text-fg"
+            >
+              {tag}
+            </span>
+          );
+        })}
       </div>
     </SpotlightCard>
   );

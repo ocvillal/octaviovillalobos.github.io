@@ -95,7 +95,7 @@ export const THEME_SCRIPT = `
   try {
     var theme = localStorage.getItem('${THEME_KEY}');
     if (theme !== 'light' && theme !== 'dark') {
-      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      theme = 'dark';
     }
     document.documentElement.classList.toggle('dark', theme === 'dark');
 
