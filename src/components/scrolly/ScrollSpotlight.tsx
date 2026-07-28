@@ -77,39 +77,44 @@ export function ScrollSpotlight<T>({
         ))}
       </div>
 
-      <div
-        className="hidden lg:sticky lg:block"
-        style={{ top: topOffset, marginTop: topOffset }}
-      >
-        <div className="relative" ref={panelWrapperRef}>
-          {items.map((item, index) => (
-            <div
-              key={getKey(item, index)}
-              className="transition-opacity duration-300"
-              style={{
-                display: index === activeIndex ? "block" : "none",
-              }}
-            >
-              {renderPanel(item, index)}
-            </div>
-          ))}
-        </div>
+      {/* This wrapper is the grid item — it stretches to match the left column's
+          full height, which gives the sticky child below room to travel/release
+          properly. It must NOT be the sticky element itself: if it were, its own
+          box would be stretched to thousands of pixels tall, and the browser
+          would treat it as "in range to stick" for nearly the entire section,
+          so it would never release at the section boundaries. */}
+      <div className="hidden lg:block">
+        <div className="lg:sticky" style={{ top: topOffset, marginTop: topOffset }}>
+          <div className="relative" ref={panelWrapperRef}>
+            {items.map((item, index) => (
+              <div
+                key={getKey(item, index)}
+                className="transition-opacity duration-300"
+                style={{
+                  display: index === activeIndex ? "block" : "none",
+                }}
+              >
+                {renderPanel(item, index)}
+              </div>
+            ))}
+          </div>
 
-        <div className="mt-5 flex justify-center gap-2">
-          {items.map((item, index) => (
-            <button
-              key={getKey(item, index)}
-              type="button"
-              onClick={() => scrollToIndex(index)}
-              aria-label={`Jump to item ${index + 1}`}
-              className="h-2 rounded-full transition-all duration-300"
-              style={{
-                width: index === activeIndex ? 24 : 8,
-                background:
-                  index === activeIndex ? "var(--color-accent)" : "var(--color-border)",
-              }}
-            />
-          ))}
+          <div className="mt-5 flex justify-center gap-2">
+            {items.map((item, index) => (
+              <button
+                key={getKey(item, index)}
+                type="button"
+                onClick={() => scrollToIndex(index)}
+                aria-label={`Jump to item ${index + 1}`}
+                className="h-2 rounded-full transition-all duration-300"
+                style={{
+                  width: index === activeIndex ? 24 : 8,
+                  background:
+                    index === activeIndex ? "var(--color-accent)" : "var(--color-border)",
+                }}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>
