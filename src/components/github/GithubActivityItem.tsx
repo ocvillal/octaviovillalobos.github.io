@@ -6,7 +6,7 @@ export function GithubActivityItem({ item }: { item: GithubActivityItemType }) {
       href={item.href}
       target="_blank"
       rel="noreferrer"
-      className="flex items-start justify-between gap-4 rounded-xl border border-[var(--color-border)] px-4 py-3 text-sm transition-colors hover:bg-[var(--color-bg-secondary)]"
+      className="flex items-start justify-between gap-4 rounded-xl border border-[var(--color-border)] px-4 py-3 text-sm transition-colors hover:bg-[var(--color-bg)]"
     >
       <div>
         <p className="text-fg">{item.summary}</p>

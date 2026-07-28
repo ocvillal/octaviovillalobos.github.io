@@ -40,7 +40,7 @@ export function ScrollSpotlight<T>({
   }
 
   return (
-    <div className="grid gap-12 lg:grid-cols-[1fr_400px] lg:items-start lg:gap-10">
+    <div className="grid gap-12 lg:grid-cols-[1fr_400px] lg:gap-10">
       <div className="space-y-16">
         {items.map((item, index) => (
           <div
@@ -56,7 +56,7 @@ export function ScrollSpotlight<T>({
         ))}
       </div>
 
-      <div className="hidden lg:sticky lg:top-28 lg:block lg:self-start">
+      <div className="hidden lg:sticky lg:top-1/2 lg:block lg:-translate-y-1/2">
         <div className="relative">
           {items.map((item, index) => (
             <div
