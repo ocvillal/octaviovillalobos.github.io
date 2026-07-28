@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/types/project";
+import { withBasePath } from "@/lib/paths";
 
 const LINK_LABELS: Record<Project["links"][number]["kind"], string> = {
   repo: "View code",
@@ -49,7 +50,7 @@ export function ProjectDetail({ project }: { project: Project }) {
       )}
 
       <div className="relative mt-10 aspect-video w-full overflow-hidden rounded-2xl bg-black/10">
-        <Image src={project.coverImage} alt={project.name} fill className="object-cover" />
+        <Image src={withBasePath(project.coverImage)} alt={project.name} fill className="object-cover" />
       </div>
 
       <div className="mt-10 space-y-4 text-fg-muted">
@@ -64,7 +65,7 @@ export function ProjectDetail({ project }: { project: Project }) {
               key={image.src}
               className="relative aspect-video overflow-hidden rounded-xl bg-black/10"
             >
-              <Image src={image.src} alt={image.alt} fill className="object-cover" />
+              <Image src={withBasePath(image.src)} alt={image.alt} fill className="object-cover" />
             </div>
           ))}
         </div>
