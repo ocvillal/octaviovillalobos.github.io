@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { site } from "@/data/site";
 import { TagBubble } from "./TagBubble";
 
@@ -9,8 +10,14 @@ export function Hero() {
         <TagBubble label="Engineering" color="var(--color-accent-2)" className="right-4 top-20" />
         <TagBubble label="ML" color="var(--color-accent-4)" className="left-8 bottom-0" />
 
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-secondary)] px-4 py-1.5 text-sm text-fg-muted">
-          <span className="h-2 w-2 rounded-full bg-[var(--color-accent-4)]" />
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-secondary)] py-1.5 pl-1.5 pr-4 text-sm text-fg-muted">
+          <Image
+            src="/images/avatar.jpg"
+            alt={site.name}
+            width={28}
+            height={28}
+            className="rounded-full object-cover"
+          />
           Hello, I&rsquo;m {site.name.split(" ")[0]}
         </div>
 
