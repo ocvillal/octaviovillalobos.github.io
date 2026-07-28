@@ -1,5 +1,6 @@
 import { publications } from "@/data/publications";
 import { Reveal } from "@/components/motion/Reveal";
+import { SpotlightCard } from "@/components/motion/SpotlightCard";
 
 export function Publications() {
   return (
@@ -11,7 +12,7 @@ export function Publications() {
         <div className="mt-8 space-y-6">
           {publications.map((pub, i) => (
             <Reveal key={pub.title} delay={i * 100}>
-              <article className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg)] p-6">
+              <SpotlightCard className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg)] p-6">
                 <h3 className="text-lg font-semibold">{pub.title}</h3>
                 <p className="mt-1 text-sm text-fg-muted">
                   {pub.venue} · {pub.detail} · {pub.year}
@@ -30,7 +31,7 @@ export function Publications() {
                     </a>
                   ))}
                 </div>
-              </article>
+              </SpotlightCard>
             </Reveal>
           ))}
         </div>

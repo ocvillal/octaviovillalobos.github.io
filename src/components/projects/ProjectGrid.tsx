@@ -8,6 +8,7 @@ import { ProjectPanel } from "./ProjectPanel";
 import type { Project } from "@/types/project";
 import { SPOTLIGHT_COLORS } from "@/lib/spotlightColors";
 import { Reveal } from "@/components/motion/Reveal";
+import { SpotlightCard } from "@/components/motion/SpotlightCard";
 
 const featuredProjects = projects.filter((p) => p.featured);
 
@@ -29,8 +30,8 @@ export function ProjectGrid() {
             items={visibleProjects}
             getKey={(project) => project.slug}
             renderItem={(project: Project, index, isActive) => (
-              <article
-                className="transition-opacity duration-300"
+              <SpotlightCard
+                className="rounded-2xl border border-transparent p-4 -m-4 transition-opacity duration-300 hover:border-[var(--color-border)]"
                 style={{ opacity: isActive ? 1 : 0.4 }}
               >
                 <Link href={`/projects/${project.slug}`} className="group inline-flex items-baseline gap-2">
@@ -56,7 +57,7 @@ export function ProjectGrid() {
                     </span>
                   ))}
                 </div>
-              </article>
+              </SpotlightCard>
             )}
             renderPanel={(project, index) => <ProjectPanel project={project} index={index} />}
           />

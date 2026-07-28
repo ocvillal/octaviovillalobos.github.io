@@ -6,6 +6,8 @@ import { ScrollSpotlight } from "@/components/scrolly/ScrollSpotlight";
 import { ExperiencePanel } from "./ExperiencePanel";
 import { SPOTLIGHT_COLORS } from "@/lib/spotlightColors";
 import { Reveal } from "@/components/motion/Reveal";
+import { SpotlightCard } from "@/components/motion/SpotlightCard";
+import { renderCountUpText } from "@/lib/countUpText";
 
 export function Experience() {
   return (
@@ -21,7 +23,10 @@ export function Experience() {
             items={experience}
             getKey={(entry) => entry.org + entry.role}
             renderItem={(entry, index, isActive) => (
-              <article className="transition-opacity duration-300" style={{ opacity: isActive ? 1 : 0.4 }}>
+              <SpotlightCard
+                className="rounded-2xl border border-transparent p-4 -m-4 transition-opacity duration-300 hover:border-[var(--color-border)]"
+                style={{ opacity: isActive ? 1 : 0.4 }}
+              >
                 <h3
                   className="text-2xl font-bold transition-colors duration-300 sm:text-3xl"
                   style={{ color: isActive ? SPOTLIGHT_COLORS[index % SPOTLIGHT_COLORS.length] : "var(--color-fg)" }}
@@ -34,10 +39,10 @@ export function Experience() {
                 <p className="text-sm text-fg-muted">{entry.period}</p>
                 <ul className="mt-4 list-disc space-y-1.5 pl-5 text-fg-muted marker:text-[var(--color-accent)]">
                   {entry.bullets.map((bullet) => (
-                    <li key={bullet}>{bullet}</li>
+                    <li key={bullet}>{renderCountUpText(bullet)}</li>
                   ))}
                 </ul>
-              </article>
+              </SpotlightCard>
             )}
             renderPanel={(entry, index) => <ExperiencePanel entry={entry} index={index} />}
           />

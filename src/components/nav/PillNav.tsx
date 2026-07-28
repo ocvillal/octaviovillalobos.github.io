@@ -1,14 +1,7 @@
 import Link from "next/link";
 import { ThemeSwitcher } from "@/components/theme/ThemeSwitcher";
+import { NavLinks } from "@/components/nav/NavLinks";
 import { site } from "@/data/site";
-
-const LINKS = [
-  { href: "#about", label: "About" },
-  { href: "#projects", label: "Projects" },
-  { href: "#publications", label: "Publications" },
-  { href: "#experience", label: "Experience" },
-  { href: "#contact", label: "Contact" },
-];
 
 export function PillNav() {
   return (
@@ -20,17 +13,7 @@ export function PillNav() {
         >
           {site.name.split(" ")[0]}
         </Link>
-        <div className="hidden items-center gap-1 sm:flex">
-          {LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="rounded-full px-3 py-1.5 text-sm text-fg-muted transition-colors hover:text-fg"
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
+        <NavLinks />
         <ThemeSwitcher />
       </nav>
     </header>

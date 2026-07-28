@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useActiveSection } from "@/lib/useActiveSection";
 
 const SECTIONS = [
   { id: "about", label: "About" },
@@ -11,30 +11,10 @@ const SECTIONS = [
   { id: "contact", label: "Contact" },
 ];
 
+const SECTION_IDS = SECTIONS.map((s) => s.id);
+
 export function SectionRail() {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  useEffect(() => {
-    const elements = SECTIONS.map((s) => document.getElementById(s.id)).filter(
-      (el): el is HTMLElement => el !== null
-    );
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            const index = elements.indexOf(entry.target as HTMLElement);
-            if (index !== -1) setActiveIndex(index);
-          }
-        }
-      },
-      { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
-    );
-
-    elements.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
-
+  const activeIndex = Math.max(0, useActiveSection(SECTION_IDS));
   const remaining = SECTIONS.length - activeIndex - 1;
 
   return (
