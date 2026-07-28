@@ -4,6 +4,7 @@ import { experience } from "@/data/experience";
 import { education } from "@/data/education";
 import { ScrollSpotlight } from "@/components/scrolly/ScrollSpotlight";
 import { ExperiencePanel } from "./ExperiencePanel";
+import { SPOTLIGHT_COLORS } from "@/lib/spotlightColors";
 
 export function Experience() {
   return (
@@ -15,9 +16,14 @@ export function Experience() {
           <ScrollSpotlight
             items={experience}
             getKey={(entry) => entry.org + entry.role}
-            renderItem={(entry) => (
-              <article>
-                <h3 className="text-2xl font-bold text-fg sm:text-3xl">{entry.role}</h3>
+            renderItem={(entry, index, isActive) => (
+              <article className="transition-opacity duration-300" style={{ opacity: isActive ? 1 : 0.4 }}>
+                <h3
+                  className="text-2xl font-bold transition-colors duration-300 sm:text-3xl"
+                  style={{ color: isActive ? SPOTLIGHT_COLORS[index % SPOTLIGHT_COLORS.length] : "var(--color-fg)" }}
+                >
+                  {entry.role}
+                </h3>
                 <p className="mt-1 text-fg-muted">
                   {entry.org} — {entry.location}
                 </p>

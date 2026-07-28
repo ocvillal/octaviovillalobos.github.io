@@ -1,12 +1,11 @@
 import type { ExperienceEntry } from "@/data/experience";
-
-const PANEL_COLORS = ["var(--color-accent)", "var(--color-accent-4)", "var(--color-accent-2)"];
+import { SPOTLIGHT_COLORS } from "@/lib/spotlightColors";
 
 export function ExperiencePanel({ entry, index }: { entry: ExperienceEntry; index: number }) {
   return (
     <div
       className="relative aspect-[4/3] overflow-hidden rounded-3xl p-8"
-      style={{ background: PANEL_COLORS[index % PANEL_COLORS.length] }}
+      style={{ background: SPOTLIGHT_COLORS[index % SPOTLIGHT_COLORS.length] }}
     >
       <span
         aria-hidden="true"

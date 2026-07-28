@@ -5,6 +5,7 @@ import { projects } from "@/data/projects";
 import { ScrollSpotlight } from "@/components/scrolly/ScrollSpotlight";
 import { ProjectPanel } from "./ProjectPanel";
 import type { Project } from "@/types/project";
+import { SPOTLIGHT_COLORS } from "@/lib/spotlightColors";
 
 export function ProjectGrid() {
   return (
@@ -16,10 +17,16 @@ export function ProjectGrid() {
           <ScrollSpotlight
             items={projects}
             getKey={(project) => project.slug}
-            renderItem={(project: Project) => (
-              <article>
+            renderItem={(project: Project, index, isActive) => (
+              <article
+                className="transition-opacity duration-300"
+                style={{ opacity: isActive ? 1 : 0.4 }}
+              >
                 <Link href={`/projects/${project.slug}`} className="group inline-flex items-baseline gap-2">
-                  <h3 className="text-2xl font-bold text-fg group-hover:underline sm:text-3xl">
+                  <h3
+                    className="text-2xl font-bold transition-colors duration-300 group-hover:underline sm:text-3xl"
+                    style={{ color: isActive ? SPOTLIGHT_COLORS[index % SPOTLIGHT_COLORS.length] : "var(--color-fg)" }}
+                  >
                     {project.name}
                   </h3>
                   <span className="text-sm text-fg-muted opacity-0 transition-opacity group-hover:opacity-100">
