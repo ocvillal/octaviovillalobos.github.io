@@ -76,7 +76,9 @@ export function getStoredPalette(): { paletteId: PaletteId; index: number } {
 }
 
 export function applyTheme(theme: Theme) {
-  document.documentElement.classList.toggle("dark", theme === "dark");
+  // data-theme, not a class: React renders <html>'s className and would reset a
+  // script-added class back to the server value during hydration.
+  document.documentElement.setAttribute("data-theme", theme);
   window.localStorage.setItem(THEME_KEY, theme);
 }
 
@@ -97,7 +99,7 @@ export const THEME_SCRIPT = `
     if (theme !== 'light' && theme !== 'dark') {
       theme = 'dark';
     }
-    document.documentElement.classList.toggle('dark', theme === 'dark');
+    document.documentElement.setAttribute('data-theme', theme);
 
     var palettes = ${JSON.stringify(PALETTES)};
     var accentVars = ${JSON.stringify(ACCENT_VARS)};

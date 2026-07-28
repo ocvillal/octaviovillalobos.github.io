@@ -13,7 +13,10 @@ import {
 
 function getInitialTheme(): Theme {
   if (typeof document === "undefined") return "dark";
-  return getStoredTheme() ?? (document.documentElement.classList.contains("dark") ? "dark" : "light");
+  return (
+    getStoredTheme() ??
+    (document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark")
+  );
 }
 
 export function ThemeSwitcher() {

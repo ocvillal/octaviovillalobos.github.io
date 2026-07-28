@@ -9,11 +9,11 @@ export function GithubContributions() {
 
   useEffect(() => {
     function update() {
-      setScheme(document.documentElement.classList.contains("dark") ? "dark" : "light");
+      setScheme(document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark");
     }
     update();
     const observer = new MutationObserver(update);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
     return () => observer.disconnect();
   }, []);
 
