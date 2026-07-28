@@ -1,5 +1,6 @@
 import { site } from "@/data/site";
 import { GithubActivity } from "@/components/github/GithubActivity";
+import { GithubContributions } from "@/components/github/GithubContributions";
 
 export function Contact() {
   return (
@@ -39,6 +40,13 @@ export function Contact() {
             <div className="mt-4">
               <GithubActivity />
             </div>
+          </div>
+        </div>
+
+        <div className="mt-16">
+          <h4 className="text-sm font-semibold uppercase tracking-widest text-fg-muted">GitHub</h4>
+          <div className="mt-6">
+            <GithubContributions />
           </div>
         </div>
       </div>
