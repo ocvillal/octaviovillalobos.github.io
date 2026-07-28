@@ -16,7 +16,9 @@ export function ScrollSpotlight<T>({
   renderPanel,
 }: ScrollSpotlightProps<T>) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [topOffset, setTopOffset] = useState(0);
   const refs = useRef<(HTMLDivElement | null)[]>([]);
+  const panelWrapperRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -34,6 +36,25 @@ export function ScrollSpotlight<T>({
     refs.current.forEach((el) => el && observer.observe(el));
     return () => observer.disconnect();
   }, [items.length]);
+
+  useEffect(() => {
+    const panelWrapper = panelWrapperRef.current;
+    if (!panelWrapper) return;
+
+    function recompute() {
+      const height = panelWrapper!.getBoundingClientRect().height;
+      setTopOffset(Math.max(16, (window.innerHeight - height) / 2));
+    }
+
+    recompute();
+    const resizeObserver = new ResizeObserver(recompute);
+    resizeObserver.observe(panelWrapper);
+    window.addEventListener("resize", recompute);
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", recompute);
+    };
+  }, [activeIndex]);
 
   function scrollToIndex(index: number) {
     refs.current[index]?.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -56,8 +77,8 @@ export function ScrollSpotlight<T>({
         ))}
       </div>
 
-      <div className="hidden lg:sticky lg:top-[50vh] lg:block lg:-translate-y-1/2">
-        <div className="relative">
+      <div className="hidden lg:sticky lg:block" style={{ top: topOffset }}>
+        <div className="relative" ref={panelWrapperRef}>
           {items.map((item, index) => (
             <div
               key={getKey(item, index)}
