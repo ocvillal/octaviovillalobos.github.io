@@ -18,7 +18,7 @@
   --color-accent-2: #ff9b52;
   --color-accent-3: #2dd4bf;
   --color-accent-4: #fb7185;
-  --color-accent-5: #7c5cff;
+  --color-accent-5: #ffbe0b;
 }
 
 [data-theme="light"] {
@@ -32,7 +32,7 @@
   --color-accent-2: #ff9b52;
   --color-accent-3: #2dd4bf;
   --color-accent-4: #fb7185;
-  --color-accent-5: #7c5cff;
+  --color-accent-5: #ffbe0b;
 }
 
 @theme inline {
