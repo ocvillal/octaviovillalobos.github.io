@@ -56,7 +56,7 @@ export function ScrollSpotlight<T>({
         ))}
       </div>
 
-      <div className="hidden lg:sticky lg:top-1/2 lg:block lg:-translate-y-1/2">
+      <div className="hidden lg:sticky lg:top-[50vh] lg:block lg:-translate-y-1/2">
         <div className="relative">
           {items.map((item, index) => (
             <div
