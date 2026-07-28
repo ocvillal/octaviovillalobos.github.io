@@ -2,12 +2,10 @@ import type { ComponentType } from "react";
 import {
   SiPython,
   SiCplusplus,
-  SiOpenjdk,
   SiJavascript,
   SiTypescript,
   SiDotnet,
   SiHtml5,
-  SiAngular,
   SiReact,
   SiExpo,
   SiTailwindcss,
@@ -27,7 +25,6 @@ import {
   SiMlflow,
   SiWeightsandbiases,
   SiPandas,
-  SiGooglecloud,
   SiDocker,
   SiLinux,
   SiGit,
@@ -44,7 +41,6 @@ import {
   SlidersHorizontal,
   Boxes,
   ChartLine,
-  ChartColumn,
   Workflow,
 } from "lucide-react";
 
@@ -56,13 +52,11 @@ export const techIcons: Record<string, { Icon: TagIcon; color: string }> = {
   // Languages
   Python: { Icon: SiPython, color: "#3776AB" },
   "C/C++": { Icon: SiCplusplus, color: "#00599C" },
-  Java: { Icon: SiOpenjdk, color: "var(--color-fg)" },
   JavaScript: { Icon: SiJavascript, color: "#F7DF1E" },
   TypeScript: { Icon: SiTypescript, color: "#3178C6" },
   "C#": { Icon: SiDotnet, color: "#512BD4" },
   SQL: { Icon: Database, color: "var(--color-fg)" },
   "HTML/CSS": { Icon: SiHtml5, color: "#E34F26" },
-  Angular: { Icon: SiAngular, color: "#DD0031" },
 
   // Front-end
   "React.js": { Icon: SiReact, color: "#61DAFB" },
@@ -89,17 +83,14 @@ export const techIcons: Record<string, { Icon: TagIcon; color: string }> = {
   "OpenAI API": { Icon: RiOpenaiFill, color: "var(--color-fg)" },
   "Claude API": { Icon: SiClaude, color: "#D97757" },
   LoRA: { Icon: SlidersHorizontal, color: "var(--color-fg)" },
-  QLoRA: { Icon: SlidersHorizontal, color: "var(--color-fg)" },
   Ollama: { Icon: SiOllama, color: "var(--color-fg)" },
   ChromaDB: { Icon: Boxes, color: "var(--color-fg)" },
   MLflow: { Icon: SiMlflow, color: "#0194E2" },
   "Weights & Biases": { Icon: SiWeightsandbiases, color: "#FFBE00" },
   Pandas: { Icon: SiPandas, color: "var(--color-fg)" },
   Matplotlib: { Icon: ChartLine, color: "var(--color-fg)" },
-  Seaborn: { Icon: ChartColumn, color: "var(--color-fg)" },
 
   // Cloud
-  "Google Cloud Platform": { Icon: SiGooglecloud, color: "#4285F4" },
   AWS: { Icon: FaAws, color: "#FF9900" },
   Docker: { Icon: SiDocker, color: "#2496ED" },
   Linux: { Icon: SiLinux, color: "var(--color-fg)" },

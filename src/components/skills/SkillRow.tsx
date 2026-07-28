@@ -16,7 +16,6 @@ export function SkillRow({ skill, index }: { skill: SkillCategory; index: number
   return (
     <SpotlightCard className="grid gap-4 rounded-2xl border-t border-[var(--color-border)] px-4 py-8 -mx-4 sm:grid-cols-[minmax(0,1fr)_2fr] sm:items-start">
       <div>
-        <span className="text-xs text-fg-muted">{String(index + 1).padStart(2, "0")}</span>
         <h3 className="text-4xl font-extrabold sm:text-5xl" style={{ color }}>
           {skill.label}
         </h3>

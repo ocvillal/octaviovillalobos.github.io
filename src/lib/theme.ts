@@ -5,12 +5,13 @@ export type PaletteColor = { name: string; hex: string };
 
 export const PALETTES: Record<PaletteId, { label: string; colors: PaletteColor[] }> = {
   neon: {
-    label: "Neon",
+    label: "Cyberpunk",
     colors: [
       { name: "Purple", hex: "#7c5cff" },
       { name: "Orange", hex: "#ff9b52" },
       { name: "Teal", hex: "#2dd4bf" },
       { name: "Rose", hex: "#fb7185" },
+      { name: "Amber Gold", hex: "#ffbe0b" },
     ],
   },
   "beach-day": {
