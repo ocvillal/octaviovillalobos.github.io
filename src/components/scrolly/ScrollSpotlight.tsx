@@ -77,7 +77,10 @@ export function ScrollSpotlight<T>({
         ))}
       </div>
 
-      <div className="hidden lg:sticky lg:block" style={{ top: topOffset }}>
+      <div
+        className="hidden lg:sticky lg:block"
+        style={{ top: topOffset, marginTop: topOffset }}
+      >
         <div className="relative" ref={panelWrapperRef}>
           {items.map((item, index) => (
             <div
