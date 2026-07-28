@@ -17,4 +17,11 @@ export const publications: Publication[] = [
       { label: "DOI/Link", href: "https://arxiv.org/abs/2505.04843" },
     ],
   },
+  {
+    title: "Selma: Simulating Personality-Driven Discussion Among Agents",
+    venue: "Submitted to AIIDE 2026",
+    detail: "Status: TBA",
+    year: 2026,
+    links: [],
+  },
 ];

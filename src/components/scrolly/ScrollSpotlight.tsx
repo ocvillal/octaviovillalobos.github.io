@@ -84,7 +84,7 @@ export function ScrollSpotlight<T>({
           would treat it as "in range to stick" for nearly the entire section,
           so it would never release at the section boundaries. */}
       <div className="hidden lg:block">
-        <div className="lg:sticky" style={{ top: topOffset, marginTop: topOffset }}>
+        <div className="lg:sticky" style={{ top: topOffset }}>
           <div className="relative" ref={panelWrapperRef}>
             {items.map((item, index) => (
               <div

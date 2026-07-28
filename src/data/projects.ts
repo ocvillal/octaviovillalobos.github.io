@@ -6,7 +6,7 @@ export const projects: Project[] = [
     name: "Selma",
     subtitle: "Framework for socially realistic NPCs",
     description:
-      "A framework for creating realistic and socially aware RL NPC agents in video games. Currently under development, with a conference submission in progress.",
+      "A framework for creating realistic and socially aware RL NPC agents in video games. The accompanying paper, “Selma: Simulating Personality-Driven Discussion Among Agents,” has been submitted to AIIDE 2026.",
     tech: ["Python", "LLM", "RL"],
     coverImage: "/images/projects/selma/cover.webp",
     images: [{ src: "/images/projects/selma/cover.webp", alt: "Selma project preview" }],
