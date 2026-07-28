@@ -53,7 +53,7 @@ const ACCENT_VARS = [
   "--color-accent-5",
 ];
 
-const THEME_KEY = "theme";
+const THEME_KEY = "theme_v2";
 const PALETTE_KEY = "palette";
 const PALETTE_INDEX_KEY = "paletteIndex";
 const DEFAULT_PALETTE: PaletteId = "neon";
