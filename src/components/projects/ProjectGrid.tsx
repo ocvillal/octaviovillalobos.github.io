@@ -23,7 +23,6 @@ export function ProjectGrid() {
 
         <div className="mt-8">
           <ScrollSpotlight
-            sectionLabel="Projects"
             items={visibleProjects}
             getKey={(project) => project.slug}
             renderItem={(project: Project, index, isActive) => (

@@ -15,7 +15,6 @@ export function Experience() {
 
         <div className="mt-8">
           <ScrollSpotlight
-            sectionLabel="Experience"
             items={experience}
             getKey={(entry) => entry.org + entry.role}
             renderItem={(entry, index, isActive) => (

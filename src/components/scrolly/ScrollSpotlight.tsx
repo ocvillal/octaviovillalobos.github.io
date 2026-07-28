@@ -1,10 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { SPOTLIGHT_COLORS } from "@/lib/spotlightColors";
 
 interface ScrollSpotlightProps<T> {
-  sectionLabel: string;
   items: T[];
   getKey: (item: T, index: number) => string;
   renderItem: (item: T, index: number, isActive: boolean) => React.ReactNode;
@@ -12,7 +10,6 @@ interface ScrollSpotlightProps<T> {
 }
 
 export function ScrollSpotlight<T>({
-  sectionLabel,
   items,
   getKey,
   renderItem,
@@ -20,10 +17,8 @@ export function ScrollSpotlight<T>({
 }: ScrollSpotlightProps<T>) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [topOffset, setTopOffset] = useState(0);
-  const [inView, setInView] = useState(false);
   const refs = useRef<(HTMLDivElement | null)[]>([]);
   const panelWrapperRef = useRef<HTMLDivElement | null>(null);
-  const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     setActiveIndex(0);
@@ -43,18 +38,6 @@ export function ScrollSpotlight<T>({
     refs.current.forEach((el) => el && observer.observe(el));
     return () => observer.disconnect();
   }, [items.length]);
-
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => setInView(entry.isIntersecting),
-      { rootMargin: "-10% 0px -10% 0px", threshold: 0 }
-    );
-    observer.observe(container);
-    return () => observer.disconnect();
-  }, []);
 
   useEffect(() => {
     const panelWrapper = panelWrapperRef.current;
@@ -79,28 +62,8 @@ export function ScrollSpotlight<T>({
     refs.current[index]?.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 
-  const remaining = items.length - activeIndex - 1;
-
   return (
-    <div ref={containerRef} className="grid gap-12 lg:grid-cols-[1fr_400px] lg:gap-10">
-      {inView && (
-        <div className="pointer-events-none fixed left-6 top-1/2 z-30 hidden -translate-y-1/2 flex-col gap-1 xl:flex">
-          <span className="text-xs font-semibold uppercase tracking-widest text-fg-muted">
-            {sectionLabel}
-          </span>
-          <span
-            className="text-3xl font-black transition-colors duration-300"
-            style={{ color: SPOTLIGHT_COLORS[activeIndex % SPOTLIGHT_COLORS.length] }}
-          >
-            {String(activeIndex + 1).padStart(2, "0")}
-          </span>
-          <span className="text-xs text-fg-muted">
-            of {String(items.length).padStart(2, "0")}
-            {remaining > 0 ? ` · ${remaining} left` : " · last one"}
-          </span>
-        </div>
-      )}
-
+    <div className="grid gap-12 lg:grid-cols-[1fr_400px] lg:gap-10">
       <div className="space-y-16">
         {items.map((item, index) => (
           <div
