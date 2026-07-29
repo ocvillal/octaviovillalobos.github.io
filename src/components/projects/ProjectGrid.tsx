@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { projects } from "@/data/projects";
-import { withBasePath } from "@/lib/paths";
 import { ScrollSpotlight } from "@/components/scrolly/ScrollSpotlight";
 import { ProjectPanel } from "./ProjectPanel";
 import type { Project } from "@/types/project";
@@ -34,8 +34,8 @@ export function ProjectGrid() {
                 className="rounded-2xl border border-transparent p-4 -m-4 transition-opacity duration-300 hover:border-[var(--color-border)]"
                 style={{ opacity: isActive ? 1 : 0.4 }}
               >
-                <a
-                  href={withBasePath(`/projects/${project.slug}/`)}
+                <Link
+                  href={`/projects/${project.slug}`}
                   className="group inline-flex items-baseline gap-2"
                 >
                   <h3
@@ -47,7 +47,7 @@ export function ProjectGrid() {
                   <span className="text-sm text-fg-muted opacity-0 transition-opacity group-hover:opacity-100">
                     view case study →
                   </span>
-                </a>
+                </Link>
                 <p className="mt-1 text-fg-muted">{project.subtitle}</p>
                 <p className="mt-4 max-w-xl leading-relaxed text-fg-muted">{project.description}</p>
                 <div className="mt-4 flex flex-wrap gap-2">
