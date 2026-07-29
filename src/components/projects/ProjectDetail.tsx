@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import type { Project } from "@/types/project";
 import { withBasePath } from "@/lib/paths";
 
@@ -14,9 +13,9 @@ const LINK_LABELS: Record<Project["links"][number]["kind"], string> = {
 export function ProjectDetail({ project }: { project: Project }) {
   return (
     <article className="mx-auto max-w-3xl px-4 py-16">
-      <Link href="/#projects" className="text-sm text-fg-muted hover:text-fg">
+      <a href={withBasePath("/#projects")} className="text-sm text-fg-muted hover:text-fg">
         ← Back to projects
-      </Link>
+      </a>
 
       <h1 className="mt-4 text-4xl font-black sm:text-5xl">{project.name}</h1>
       <p className="mt-2 text-lg text-fg-muted">{project.subtitle}</p>
