@@ -55,7 +55,6 @@ export const projects: Project[] = [
         kind: "demo",
       },
     ],
-    featured: true,
   },
   {
     slug: "formula-forecast",
@@ -67,7 +66,31 @@ export const projects: Project[] = [
     tech: ["Neural Networks", "PyTorch", "Pandas", "Matplotlib", "Scikit-Learn"],
     coverImage: "/images/projects/formula-forecast/cover.webp",
     images: [{ src: "/images/projects/formula-forecast/cover.webp", alt: "Formula Forecast project preview" }],
-    links: [],
+    links: [
+      { label: "Repo", href: "https://github.com/NihalErnest89/Formula-Forecast", kind: "repo" },
+      { label: "Demo", href: "https://nihalernest89.github.io/Formula-Forecast/", kind: "demo" },
+    ],
+    featured: true,
+  },
+  {
+    slug: "spindl",
+    name: "Spindl",
+    subtitle: "A music diary app — Letterboxd, but for music",
+    description:
+      "A music diary app to log albums, rate songs, and share with friends — browse charts and personalized recommendations, search albums and artists, and follow friends' activity feeds, all behind Supabase-backed accounts.",
+    body: "Built with Expo SDK 54, React Native 0.81.5, and React 19, backed by Supabase for auth and data. Uses the Deezer and Spotify APIs for search, artist discovery, and metadata, and the Last.fm API for charts and recommendations.",
+    tech: ["React Native", "Expo", "TypeScript", "Supabase", "Spotify API", "Deezer API", "Last.fm API"],
+    coverImage: "/images/projects/spindl/cover.webp",
+    images: [{ src: "/images/projects/spindl/cover.webp", alt: "Spindl project preview" }],
+    links: [
+      { label: "Repo", href: "https://github.com/ocvillal/Spindl", kind: "repo" },
+      {
+        label: "Demo",
+        href: "https://github.com/ocvillal/Spindl/blob/main/README.md",
+        kind: "video",
+      },
+    ],
+    featured: true,
   },
   {
     slug: "llms-are-acds",
@@ -90,7 +113,6 @@ export const projects: Project[] = [
       },
       { label: "Paper", href: "https://arxiv.org/abs/2505.04843", kind: "paper" },
     ],
-    featured: true,
   },
   {
     slug: "home-gen-new-gen",
