@@ -13,8 +13,8 @@ export function Contact() {
             <h2 className="text-sm font-semibold uppercase tracking-widest text-fg-muted">Contact</h2>
             <h3 className="mt-4 text-3xl font-bold sm:text-4xl">Let&rsquo;s build something.</h3>
             <p className="mt-4 max-w-sm text-fg-muted">
-              I&rsquo;m actively looking for entry-level roles in Product Design, Software Engineering,
-              and ML Engineering. Reach out if that sounds like a fit.
+              I&rsquo;m actively looking for entry-level roles in Product Design, SWE,
+              and FDE. Reach out if that sounds like a fit.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Magnetic>
