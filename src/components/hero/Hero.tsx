@@ -43,7 +43,7 @@ export function Hero() {
               />
             </h1>
 
-            <p className="mt-5 text-xl font-bold text-fg">Computer Scientist &amp; ML Engineer</p>
+            <p className="mt-5 text-xl font-bold text-fg">Computer Scientist &amp; AI Engineer</p>
 
             <div className="mt-6 flex flex-wrap gap-3">
               {CONTACT_LINKS.map(({ label, href, icon: Icon, bg }) => (

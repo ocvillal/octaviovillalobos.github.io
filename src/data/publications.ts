@@ -18,8 +18,8 @@ export const publications: Publication[] = [
     ],
   },
   {
-    title: "Selma: Simulating Personality-Driven Discussion Among Agents",
-    venue: "Submitted to AIIDE 2026",
+    title: "Coming Soon: Selma: Simulating Personality-Driven Discussion Among Agents",
+    venue: "AAAI Conference on Artificial Intelligence and Interactive Digital Entertainment 2026",
     detail: "Status: TBA",
     year: 2026,
     links: [],
