@@ -5,6 +5,10 @@ const nextConfig: NextConfig = {
   output: "export",
   images: { unoptimized: true },
   basePath: BASE_PATH,
+  // GitHub Pages needs every route as <route>/index.html, not <route>.html —
+  // otherwise client-side <Link> navigation (which normalizes to a trailing
+  // slash) hits an empty directory with no index.html and 404s.
+  trailingSlash: true,
 };
 
 export default nextConfig;
